@@ -1,0 +1,164 @@
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between; /* Keep this to space out the logo and the menu */
+    align-items: center; /* Align items vertically */
+    padding: 1em;
+    background-color: #fff;
+  }
+  .store-header {
+    text-align: center;
+    padding: 1em 0;
+  }
+  .store-image {
+    width: 150px; /* or any size you want */
+    height: 150px; /* same as width to maintain aspect ratio */
+    border-radius: 50%; /* this makes it circular */
+    object-fit: cover; /* this will ensure the image covers the area without stretching */
+    display: block;
+    margin: 0 auto 10px; /* centers the image and adds space below */
+  }
+  .store-logo {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+  }
+  .menu-bar {
+    background-color: #f4f4f4;
+    padding: 0.5em 0;
+  }
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* centers the menu items horizontally */
+    gap: 1em;
+  }
+  
+  .menu li {
+    padding: 0.5em 1em;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .menu li:hover {
+    background-color: #ddd;
+  }
+  .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-right: auto; /* Push all other items to the right */
+    margin-left: auto;  /* Push all other items to the left */
+    display: block; /* added to ensure text-align center works */
+  }
+  .menu {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+  }
+  .menu li {
+    padding: 0.5em 1em;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .menu li:hover {
+    background-color: #ddd;
+  }
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1em;
+    padding: 1em;
+    overflow: hidden;
+    position: relative;
+    justify-items: center; /* centers grid items horizontally */
+    align-items: center; /* centers grid items vertically */
+  }
+  .category-card {
+    width: 100%; /* Full width of the grid column */
+    height: 250px; /* Set a fixed height for all grid items */
+    overflow: hidden; /* Hide parts of the image that do not fit */
+    position: relative; /* Needed to position the content inside it */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: flex-start; /* Align children to the start of the flex container */
+  }
+  
+  .category-card img {
+    width: 100%; /* Make image full width of the card */
+    height: 200px; /* Adjust height to maintain aspect ratio */
+    object-fit: contain; /* Cover the area of the card, cropping the image if necessary */
+  }
+  .category-card h3 {
+    text-align: center;
+    padding: 0.5em;
+    
+  }
+  .footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #f4f4f4;
+  }
+  /* Transitions */
+  .category-grid {
+    transition: transform 0.3s ease;
+  }
+
+  .contact-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    z-index: 2;
+  }
+  .contact-popup {
+    /* display: block; Hidden by default */
+    position: fixed;
+    right: 10px;
+    top: 50px; /* Positioned slightly below the contact button */
+    width: 200px; /* Or your desired size */
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+     /* Ensures the popup is above other content */
+  }
+  .store-description {
+    font-family: 'Poppins', sans-serif; /* Apply the Poppins font */
+    font-size: 16px; /* Adjust size as needed */
+    color: #333; /* Dark gray for readability */
+    margin-top: 10px; /* Space between store name and description */
+    padding: 0 20px; /* Padding on the sides */
+    text-align: center; /* Center-align the text */
+    max-width: 600px; /* Maximum width for better readability */
+    margin-left: auto; /* Center the description container */
+    margin-right: auto; /* Center the description container */
+  }
+
+  @media (max-width: 767px) {
+    .category-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 images per row */
+    }
+   
+      .store-description {
+        font-size: 14px; /* Slightly smaller font on mobile devices */
+        padding: 0 10px; /* Less padding on the sides */
+      }
+  }
+  
