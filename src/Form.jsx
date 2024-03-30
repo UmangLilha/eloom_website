@@ -1,29 +1,34 @@
-import React, { useState } from 'react';
-import { TextField, Button, Box, Typography,IconButton } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import {getFirestore,collection, doc, getDoc,setDoc} from 'firebase/firestore'
-import { useNavigate } from 'react-router-dom';
-import {app} from './firebase'
+import React, { useState } from "react";
+import { TextField, Button, Box, Typography, IconButton } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import {
+  getFirestore,
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+} from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { app } from "./firebase";
 
 const firestore = getFirestore(app);
 
 const Form = () => {
-
   let navigate = useNavigate();
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    mobile: '',
-    description: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    mobile: "",
+    description: "",
   });
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -34,37 +39,55 @@ const Form = () => {
       const timestamp = Date.now();
       const docRef = doc(firestore, "forms", String(timestamp)); // Specify the collection and document ID
       await setDoc(docRef, formData); // Set the document with formData
-      
+
       setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        mobile: '',
-        description: ''
+        firstName: "",
+        lastName: "",
+        email: "",
+        mobile: "",
+        description: "",
       });
       setSubmitSuccess(true);
     } catch (error) {
       console.error("Error adding document: ", error);
       setSubmitSuccess(false);
     }
-
   };
 
   return (
     <Box
       component="form"
-      sx={{ '& .MuiTextField-root': { m: 1 }, padding: 3, alignItems:'center',justifyContent: 'center' }}
+      sx={{
+        "& .MuiTextField-root": { m: 1 },
+        padding: 3,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
       autoComplete="off"
       onSubmit={handleSubmit}
     >
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-            <IconButton onClick={() => navigate('/')} sx={{ marginRight: 1, alignSelf: 'flex-start' }}>
-            <ArrowBackIcon />
-            </IconButton>
-                <Typography variant="h5" component="h2" sx={{ textAlign: 'center', width: '100%', padding:'20px ' }}>
-                CONNECT WITH US
-                </Typography>
-        </Box>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        <IconButton
+          onClick={() => navigate("/")}
+          sx={{ marginRight: 1, alignSelf: "flex-start" }}
+        >
+          <ArrowBackIcon />
+        </IconButton>
+        <Typography
+          variant="h5"
+          component="h2"
+          sx={{ textAlign: "center", width: "100%", padding: "20px " }}
+        >
+          CONNECT WITH US
+        </Typography>
+      </Box>
       <TextField
         required
         name="firstName"
@@ -112,10 +135,11 @@ const Form = () => {
       <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
         Submit
       </Button>
-      {submitSuccess && <Typography color="green">Form submitted successfully!</Typography>}
+      {submitSuccess && (
+        <Typography color="green">Form submitted successfully!</Typography>
+      )}
     </Box>
   );
 };
 
 export default Form;
-;
